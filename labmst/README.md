@@ -1,16 +1,95 @@
-# React + Vite
+Experiment-2:- Fetch Users from API using React
+(LABMST)
+Experiment Title
+Fetch Data from an API using useEffect Hook in React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Objective
+The objective of this experiment is to understand how to fetch data from an external API in a React application using the useEffect hook and display it dynamically on the webpage.
 
-Currently, two official plugins are available:
+Technologies Used
+React.js
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+JavaScript (ES6)
 
-## React Compiler
+CSS
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Vite
 
-## Expanding the ESLint configuration
+REST API
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+API Used
+User data is fetched from the following API:
+
+
+https://jsonplaceholder.typicode.com/users
+This API returns sample user information such as name and email.
+
+Folder Structure
+
+labmst
+│
+├── src
+│   ├── components
+│   │      └── Users.jsx
+│   │
+│   ├── App.jsx
+│   ├── App.css
+│   └── main.jsx
+│
+├── public
+├── index.html
+├── package.json
+└── vite.config.js
+Implementation Logic
+The React application starts from main.jsx.
+
+The App component loads the Users component.
+
+The Users component fetches data from the API using the fetch() method.
+
+The useEffect hook ensures the API call runs when the component loads.
+
+The fetched data is stored using useState.
+
+The user list is displayed dynamically using the map() function.
+
+React Hooks Used
+useState
+Used to store the user data fetched from the API.
+
+useEffect
+Used to perform side effects such as fetching data when the component loads.
+
+Features
+Fetch data from an external API
+
+Display users dynamically
+
+Responsive card-based layout
+
+Styled user interface using CSS
+
+Hover effects on user cards
+
+Output
+The application displays a centered grid of user cards containing:
+
+User Name
+
+User Email
+
+Users are displayed in a horizontal responsive layout.
+
+Possible Improvements
+Add loading indicator while fetching data
+
+Add error handling for API failures
+
+Use Axios instead of fetch
+
+Separate API logic into a service file
+
+Add search functionality
+
+Conclusion
+This experiment demonstrates how React can interact with external APIs using the useEffect hook and dynamically render data in the user interface.
