@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Multi-Page React App with Routing and Lazy Loading
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Objective
+Create a React application with multiple pages (Home, About, Contact) using React Router for navigation and optimize it using `React.lazy()` and `Suspense` for lazy loading.
 
-## Available Scripts
+## Technologies Used
+- React.js
+- React Router DOM v6
+- React.lazy()
+- Suspense
 
-In the project directory, you can run:
+## Concepts Covered
 
-### `npm start`
+### React Router DOM
+- `BrowserRouter` to enable routing in the app
+- `Routes` and `Route` to define page paths
+- `NavLink` for navigation with active link styling
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Lazy Loading
+- `React.lazy()` loads each page only when it is visited
+- Reduces the initial bundle size (code splitting)
+- `<Suspense fallback={...}>` shows a loading spinner while the page loads
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## File Structure
+```
+src/
+├── pages/
+│   ├── Home.js        ← Home page (lazy loaded)
+│   ├── About.js       ← About page (lazy loaded)
+│   └── Contact.js     ← Contact form page (lazy loaded)
+└── App.js             ← Router + React.lazy + Suspense setup
+```
 
-### `npm test`
+## Key Code
+```jsx
+const Home    = lazy(() => import('./pages/Home'));
+const About   = lazy(() => import('./pages/About'));
+const Contact = lazy(() => import('./pages/Contact'));
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<Suspense fallback={<div>Loading...</div>}>
+  <Routes>
+    <Route path="/"        element={<Home />} />
+    <Route path="/about"   element={<About />} />
+    <Route path="/contact" element={<Contact />} />
+  </Routes>
+</Suspense>
+```
 
-### `npm run build`
+## How to Run
+```bash
+npm install
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Features
+- Multi-page navigation (Home, About, Contact)
+- Active link highlighting in navbar
+- Lazy loading for all pages
+- Loading spinner shown during page load
+- Working contact form with submission feedback
